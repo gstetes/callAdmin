@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const connection = require('../database/connection');
 
+// Listar todos os usuários
 exports.index = async (req, res) => {
   // Receber todos os usuários em uma variável
   const users = await connection('user')
@@ -11,6 +12,7 @@ exports.index = async (req, res) => {
   return res.json(users);
 };
 
+// Listar apenas um usuário
 exports.search = async (req, res) => {
   // Receber o ID de um usuário
   const { id } = req.params;
@@ -31,6 +33,7 @@ exports.search = async (req, res) => {
   return res.json(user);
 };
 
+// Criar um usuário
 exports.create = async (req, res) => {
   // Receber dados do usuario
   const { name, email, password } = req.body;
@@ -72,12 +75,24 @@ exports.create = async (req, res) => {
   return res.json(user);
 };
 
+// Alterar um usuário
 exports.update = async (req, res) => {
   // Recebe o ID do usuário
   const { id } = req.params;
 
   // Recebe os novos dados do usuário
   const { name, email, password } = req.body;
+
+  // Verificar existência de usuário
+  const user = await connection('user')
+    .select('*')
+    .where('id', id)
+    .first();
+
+  if (!user) {
+    return res.status(400)
+      .json({ error: 'User does not exists.' });
+  }
 
   // Criar hash de senha
   const hashPass = await bcrypt.hash(password, 16);
@@ -105,6 +120,7 @@ exports.update = async (req, res) => {
   return res.json(data);
 };
 
+// Deletar um usuário
 exports.delete = async (req, res) => {
   // Recebe ID do usuário
   const { id } = req.params;
