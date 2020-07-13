@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('call', function (table) {
+  return knex.schema.createTable('call', (table) => {
     table.increments('id_call').primary();
     table.date('date');
     table.time('time');
