@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
   const match = await bcrypt.compare(password, user.password);
 
   if (!match) {
-    return res.status(400)
+    return res.status(401)
       .json({ error: 'Unauthorized.' });
   }
 

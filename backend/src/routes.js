@@ -24,7 +24,7 @@ router.put('/workers/:id', authMiddleware, WorkerController.update);
 router.delete('/workers/:id', authMiddleware, WorkerController.delete);
 
 // Call Routes
-router.get('/calls', authMiddleware, CallController.index);
+router.get('/calls/?', authMiddleware, CallController.index);
 router.get('/calls/:id', authMiddleware, CallController.search);
 router.post('/calls', authMiddleware, CallController.create);
 router.put('/calls/:id', authMiddleware, CallController.update);

@@ -1,6 +1,9 @@
 const connection = require('../database/connection');
 
 exports.index = async (req, res) => {
+  // Recuperar data
+  const { date } = req.query;
+
   // Recupera todos os registros do banco de dados
   const calls = await connection('call')
     .join('worker', 'worker.id', '=', 'call.id_worker')
@@ -8,6 +11,7 @@ exports.index = async (req, res) => {
       'call.*',
       'worker.name',
     ])
+    .where('call.date', date)
     .orderBy('call.emergency', 'desc');
 
   // Retorna como resposta
@@ -26,6 +30,7 @@ exports.search = async (req, res) => {
       'worker.name',
     ])
     .where('call.id_call', id);
+
   // Verificar existência do chamado no banco de dados
   if (!call) {
     return res.status(400)
