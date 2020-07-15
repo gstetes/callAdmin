@@ -1,0 +1,38 @@
+.dash-container {
+  display: flex;
+  height: 84vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dash-container h1 {
+  color: #0684CB;
+  font-size: 45px;
+  margin-top: 2em;
+}
+
+.dash-content {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  height: 30vh;
+  margin-top: 3em;
+  padding: 20px;
+  background-color: #555555;
+  border-radius: 5px;
+}
+
+.dash-content h2 {
+  color: #DDD;
+  font-size: 25px
+}
+
+.dash-content p {
+  color: #FFF;
+  font-size: 20px;
+  margin-top: 18px;
+}
+
+.dash-content strong {
+  color: #0684CB;
+}

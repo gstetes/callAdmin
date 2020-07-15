@@ -1,0 +1,36 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #222;
+  color: #FFF;
+}
+
+.header-container ul {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  list-style: none;
+  padding: 2em;
+  margin-left: 20px;
+}
+
+.header-container ul li a{
+  text-decoration: none;
+  color: #FFF;
+  font-size: 20px;
+  cursor: pointer
+}
+
+.header-container ul li a:hover {
+  color: #0684CB;
+}
+
+.header-container .opt {
+  display: flex;
+  align-items: center;
+  margin-right: 2em;
+}
+
+.header-container .opt a {
+  cursor: pointer;
+}

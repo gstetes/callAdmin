@@ -1,0 +1,69 @@
+.addcall-container {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.addcall-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  background-color: #444;
+  height: 70%;
+  border-radius: 5px;
+  padding: 50px;
+}
+
+.addcall-content h2 {
+  color: #DDD;
+  text-align: center;
+  font-style: italic;
+}
+
+.addcall-content form {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addcall-content form select {
+  background-color: #555;
+  color: #FFF;
+  height: 30px;
+  margin-top: 1em;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.addcall-content form textarea {
+  background-color: #555;
+  color: #FFF;
+  height: 150px;
+  width: 80%;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 1em;
+}
+
+.addcall-content form textarea::placeholder {
+  color: #DDD;
+}
+
+.addcall-content form button {
+  margin-top: 3em;
+  width: 60%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0684CB;
+  color: #FFF;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.addcall-content form button:hover {
+  opacity: 90%;
+}

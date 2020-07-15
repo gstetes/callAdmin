@@ -1,0 +1,9 @@
+.footer-container {
+  display: flex;
+  background-color: #222;
+  color: #FFF;
+}
+
+.footer-container p {
+  margin: 0 auto;
+}
