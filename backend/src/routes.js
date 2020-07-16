@@ -6,6 +6,7 @@ const UserController = require('./controllers/UserController');
 const WorkerController = require('./controllers/WorkerController');
 const CallController = require('./controllers/CallController');
 const SessionController = require('./controllers/SessionController');
+const DashboardController = require('./controllers/DashboardController');
 
 const router = express.Router();
 
@@ -29,6 +30,9 @@ router.get('/calls/:id', authMiddleware, CallController.search);
 router.post('/calls', authMiddleware, CallController.create);
 router.put('/calls/:id', authMiddleware, CallController.update);
 router.delete('/calls/:id', authMiddleware, CallController.delete);
+
+// Dashboard Routes
+router.get('/dashboard', authMiddleware, DashboardController.index);
 
 // Session Routes
 router.post('/session/login', SessionController.login);

@@ -5,14 +5,28 @@ exports.index = async (req, res) => {
   const { date } = req.query;
 
   // Recupera todos os registros do banco de dados
-  const calls = await connection('call')
-    .join('worker', 'worker.id', '=', 'call.id_worker')
-    .select([
-      'call.*',
-      'worker.name',
-    ])
-    .where('call.date', date)
-    .orderBy('call.emergency', 'desc');
+  let calls;
+
+  if (date !== '') {
+    calls = await connection('call')
+      .join('worker', 'worker.id', '=', 'call.id_worker')
+      .select([
+        'call.*',
+        'worker.name',
+      ])
+      .where('call.date', date)
+      .orderBy('call.emergency', 'desc');
+  } else {
+    calls = await connection('call')
+      .join('worker', 'worker.id', '=', 'call.id_worker')
+      .select([
+        'call.*',
+        'worker.name',
+      ])
+      .orderBy('date', 'desc')
+      .orderBy('time', 'desc');
+  }
+
 
   // Retorna como resposta
   return res.json(calls);

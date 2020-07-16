@@ -47,6 +47,7 @@ const History = () => {
           <thead>
             <tr>
               <th>ID</th>
+              <th>Data</th>
               <th>Hora</th>
               <th>Funcionário</th>
               <th>Detalhe</th>
@@ -58,6 +59,7 @@ const History = () => {
             {calls.map(call => (
               <tr key={call.id_call}>
                 <td>{call.id_call}</td>
+                <td>{call.date}</td>
                 <td>{call.time}</td>
                 <td>{call.name}</td>
                 <td>{call.detail}</td>
