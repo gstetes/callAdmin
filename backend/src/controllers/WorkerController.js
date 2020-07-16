@@ -3,7 +3,8 @@ const connection = require('../database/connection');
 exports.index = async (req, res) => {
   // Receber todos workers em uma variavel
   const workers = await connection('worker')
-    .select('*');
+    .select('*')
+    .orderBy('name', 'asc');
 
   // Retornar workers como resposta
   return res.json(workers);
