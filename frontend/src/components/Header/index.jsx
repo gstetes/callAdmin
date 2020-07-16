@@ -1,10 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom';
+
 import './styles.css';
 
 import { FaSignOutAlt } from 'react-icons/fa';
 
 const Header = () => {
+  const username = localStorage.getItem('user_name');
+
+  const history = useHistory();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push('/login');
+  };
+
   return (
     <div className="header-container">
       <ul>
@@ -22,7 +32,8 @@ const Header = () => {
         </li>
       </ul>
       <div className="opt">
-        <Link to="/login"><FaSignOutAlt size="35" color="F00" /></Link>
+        <p>Bem vindo, {username}!</p>
+        <FaSignOutAlt size="35" color="F00" onClick={handleLogout} />
       </div>
     </div>
   );

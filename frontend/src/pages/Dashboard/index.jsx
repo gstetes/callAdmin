@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import './styles.css';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const Dashboard = () => {
+  const token = localStorage.getItem('user_token');
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!token) {
+      history.push('/login');
+    }
+  }, []);
+
   return (
     <>
       <Header />

@@ -31,6 +31,11 @@
   margin-right: 2em;
 }
 
-.header-container .opt a {
+.header-container .opt p {
+  margin-right: 1em;
+  font-size: 18px;
+}
+
+.header-container .opt svg {
   cursor: pointer;
 }
