@@ -62,9 +62,18 @@ exports.create = async (req, res) => {
   // Criar objeto de dados
   const date = new Date();
 
+  const day = date.getDate();
+  const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const year = date.getFullYear();
+  const todayDate = `${day}/${month}/${year}`;
+
+  const hours = date.getHours() - 3;
+  const minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+  const todayTime = `${hours}:${minutes}`;
+
   const data = {
-    date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-    time: `${date.getHours()}:${date.getMinutes()}`,
+    date: todayDate,
+    time: todayTime,
     id_worker: worker,
     detail,
     emergency,
@@ -90,7 +99,7 @@ exports.update = async (req, res) => {
 
   // Recebe dados para alteração
   const {
-    worker, detail, emergency, done,
+    worker, detail, emergency, done = false,
   } = req.body;
 
   // Recupera dados do banco de dados
@@ -106,11 +115,7 @@ exports.update = async (req, res) => {
   }
 
   // Criar objeto com novos dados
-  const date = new Date();
-
   const data = {
-    date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-    time: `${date.getHours()}:${date.getMinutes()}`,
     id_worker: worker,
     detail,
     emergency,

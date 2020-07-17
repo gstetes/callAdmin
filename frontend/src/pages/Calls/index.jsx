@@ -13,7 +13,9 @@ const Calls = () => {
   const token = localStorage.getItem('user_token');
 
   const date = new Date();
-  const today = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+  const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const today = `${date.getDate()}/${month}/${date.getFullYear()}`;
 
   const [calls, setCalls] = useState([]);
 
